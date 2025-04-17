@@ -705,7 +705,7 @@ export default function PropertyLanding() {
                 image.id === selectedImage && (
                   <motion.div
                     key={`modal-${image.id}`}
-                    className="relative w-[50vw] max-w-5xl max-h-[85vh] flex items-center justify-center"
+                    className="relative w-[50vw] min-w-[300px] max-w-5xl max-h-[85vh] flex items-center justify-center"
                     initial={{ scale: 0.9, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
                     exit={{ scale: 0.9, opacity: 0 }}
