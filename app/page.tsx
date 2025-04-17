@@ -22,7 +22,7 @@ import {
 
 import { AnimatePresence, motion } from "framer-motion";
 
-import { URL } from "@/lib/utils";
+import { EMAIL, PHONE, URL, WHATSAPP_URL } from "@/lib/utils";
 import Link from "next/link";
 
 // Definir las secciones para la navegación
@@ -503,14 +503,14 @@ export default function PropertyLanding() {
                   <div className="p-2 rounded-full bg-[#8b6e4e]/10">
                     <Phone className="h-5 w-5 text-[#8b6e4e]" />
                   </div>
-                  <span className="text-[#5d4b35]">+57 300 123 4567</span>
+                  <span className="text-[#5d4b35]">{PHONE}</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="p-2 rounded-full bg-[#8b6e4e]/10">
                     <Mail className="h-5 w-5 text-[#8b6e4e]" />
                   </div>
                   <span className="text-[#5d4b35]">
-                    info@casalotelaureles.com
+                    {EMAIL}
                   </span>
                 </div>
                 <div className="flex items-center gap-3">
@@ -633,7 +633,9 @@ export default function PropertyLanding() {
       </footer>
 
       <Link
-        href={"/"}
+        href={WHATSAPP_URL}
+        target="_blank"
+        rel="noopener noreferrer"
         className="fixed bottom-5 right-5 w-10 h-10 p-2 bg-[#8b6e4e] hover:opacity-80 rounded-lg transition-all ease-in-out duration-300 shadow-lg shadow-black/30 flex items-center justify-center z-50"
       >
         <MessageCircle className="text-[#4e3923]" />
