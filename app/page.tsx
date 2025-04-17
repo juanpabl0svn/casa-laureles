@@ -228,7 +228,7 @@ export default function PropertyLanding() {
               )}
             </a>
           </nav>
-          <Link href={'#contacto'}>
+          <Link href={"#contacto"}>
             <Button className="bg-[#8b6e4e] hover:bg-[#6d563d] text-white">
               Agendar Visita
             </Button>
