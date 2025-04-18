@@ -28,11 +28,11 @@ import { sendMail } from "@/lib/action";
 import { useSearchParams } from "next/navigation";
 
 // Definir las secciones para la navegación
-type Section = "inicio" | "detalles" | "galeria" | "contacto";
+type Section =  "detalles" | "galeria" | "contacto";
 
 export default function PropertyLanding() {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
-  const [activeSection, setActiveSection] = useState<Section>("inicio");
+  const [activeSection, setActiveSection] = useState<Section>("detalles");
 
   const searchParams = useSearchParams();
 
