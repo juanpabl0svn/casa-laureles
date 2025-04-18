@@ -22,8 +22,10 @@ import {
 
 import { AnimatePresence, motion } from "framer-motion";
 
-import { EMAIL, PHONE, URL, WHATSAPP_URL } from "@/lib/utils";
+import { MAIL_USERNAME, PHONE, URL, WHATSAPP_URL } from "@/lib/utils";
 import Link from "next/link";
+import { sendMail } from "@/lib/action";
+import { useSearchParams } from "next/navigation";
 
 // Definir las secciones para la navegación
 type Section = "inicio" | "detalles" | "galeria" | "contacto";
@@ -31,6 +33,10 @@ type Section = "inicio" | "detalles" | "galeria" | "contacto";
 export default function PropertyLanding() {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
   const [activeSection, setActiveSection] = useState<Section>("inicio");
+
+  const searchParams = useSearchParams();
+
+  const messageSend = searchParams.get("messageState");
 
   // Referencias para las secciones
   const detallesRef = useRef<HTMLElement>(null);
@@ -509,9 +515,7 @@ export default function PropertyLanding() {
                   <div className="p-2 rounded-full bg-[#8b6e4e]/10">
                     <Mail className="h-5 w-5 text-[#8b6e4e]" />
                   </div>
-                  <span className="text-[#5d4b35]">
-                    {EMAIL}
-                  </span>
+                  <span className="text-[#5d4b35]">{MAIL_USERNAME}</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="p-2 rounded-full bg-[#8b6e4e]/10">
@@ -531,7 +535,7 @@ export default function PropertyLanding() {
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
             >
-              <form className="space-y-4">
+              <form className="space-y-4" action={sendMail}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <label
@@ -541,7 +545,8 @@ export default function PropertyLanding() {
                       Nombre
                     </label>
                     <Input
-                      id="nombre"
+                      id="name"
+                      name="name"
                       placeholder="Su nombre"
                       className="border-[#e8e0d8] focus-visible:ring-[#8b6e4e]"
                     />
@@ -554,7 +559,8 @@ export default function PropertyLanding() {
                       Apellido
                     </label>
                     <Input
-                      id="apellido"
+                      id="surname"
+                      name="surname"
                       placeholder="Su apellido"
                       className="border-[#e8e0d8] focus-visible:ring-[#8b6e4e]"
                     />
@@ -570,6 +576,7 @@ export default function PropertyLanding() {
                   </label>
                   <Input
                     id="email"
+                    name="email"
                     type="email"
                     placeholder="Su correo electrónico"
                     className="border-[#e8e0d8] focus-visible:ring-[#8b6e4e]"
@@ -584,7 +591,8 @@ export default function PropertyLanding() {
                     Teléfono
                   </label>
                   <Input
-                    id="telefono"
+                    id="phone"
+                    name="phone"
                     placeholder="Su número de teléfono"
                     className="border-[#e8e0d8] focus-visible:ring-[#8b6e4e]"
                   />
@@ -598,7 +606,8 @@ export default function PropertyLanding() {
                     Mensaje
                   </label>
                   <Textarea
-                    id="mensaje"
+                    id="message"
+                    name="message"
                     placeholder="Escriba su mensaje o consulta aquí"
                     className="min-h-[120px] border-[#e8e0d8] focus-visible:ring-[#8b6e4e]"
                   />
@@ -609,6 +618,7 @@ export default function PropertyLanding() {
                 </Button>
               </form>
             </motion.div>
+            {messageSend && <span>{messageSend}</span>}
           </div>
         </div>
       </section>
