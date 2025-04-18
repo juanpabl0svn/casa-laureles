@@ -14,6 +14,8 @@ export const CLEAN_PHONE = PHONE.replace(/\D/g, '')
 
 export const WHATSAPP_URL = `https://api.whatsapp.com/send?phone=${CLEAN_PHONE}`
 
-export const MAIL_USERNAME = process.env.NEXT_PUBLIC_MAIL_USERNAME || process.env.MAIL_USERNAME || 'asesoria@yconsultores.com'
+export const EMAIL = 'asesoria@yconsultores.com'
 
-export const MAIL_PASSWORD = process.env.NEXT_PUBLIC_MAIL_PASSWORD || process.env.MAIL_PASSWORD || 'Catalin42024.'
+export const MAIL_USERNAME = process.env.NEXT_PUBLIC_MAIL_USERNAME || process.env.MAIL_USERNAME || 'pupizaurus@gmail.com'
+
+export const MAIL_PASSWORD = process.env.NEXT_PUBLIC_MAIL_PASSWORD || process.env.MAIL_PASSWORD || 'iwez gbfz owey lmiy'

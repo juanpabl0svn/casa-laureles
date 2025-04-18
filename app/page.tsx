@@ -22,7 +22,7 @@ import {
 
 import { AnimatePresence, motion } from "framer-motion";
 
-import { MAIL_USERNAME, PHONE, URL, WHATSAPP_URL } from "@/lib/utils";
+import { EMAIL, PHONE, URL, WHATSAPP_URL } from "@/lib/utils";
 import Link from "next/link";
 import { sendMail } from "@/lib/action";
 import { useSearchParams } from "next/navigation";
@@ -515,7 +515,7 @@ export default function PropertyLanding() {
                   <div className="p-2 rounded-full bg-[#8b6e4e]/10">
                     <Mail className="h-5 w-5 text-[#8b6e4e]" />
                   </div>
-                  <span className="text-[#5d4b35]">{MAIL_USERNAME}</span>
+                  <span className="text-[#5d4b35]">{EMAIL}</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="p-2 rounded-full bg-[#8b6e4e]/10">

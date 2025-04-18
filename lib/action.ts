@@ -1,8 +1,9 @@
 'use server';
 
-import { MAIL_PASSWORD, MAIL_USERNAME } from '@/lib/utils';
+import { EMAIL, MAIL_PASSWORD, MAIL_USERNAME } from '@/lib/utils';
+import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
-// import nodemailer from 'nodemailer';
+import nodemailer from 'nodemailer';
 
 export async function sendMail(form: FormData) {
 
@@ -33,7 +34,7 @@ export async function sendMail(form: FormData) {
 
     const mailOptions = {
       from: MAIL_USERNAME,
-      to: MAIL_USERNAME,
+      to: EMAIL,
       subject: "Interesado en casa laureles",
       html: `
         <h1>Hola soy ${name} ${surname}</h1>
@@ -49,6 +50,6 @@ export async function sendMail(form: FormData) {
     return true;
   } catch (error) {
     console.error("Error sending email:", error);
-    redirect('/?messageState=Mensaje enviado con exito')
   }
+  revalidatePath('/?messageState=Mensaje enviado con exito', "layout")
 }
